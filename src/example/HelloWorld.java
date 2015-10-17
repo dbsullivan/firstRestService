@@ -47,12 +47,22 @@ public class HelloWorld {
 
     // The Java method will process HTTP GET requests, like: http://localhost:9998/helloworld/html/Dave
     @GET
-    // The Java method will produce content identified by the MIME Media type "json"
+    // The Java method will produce content identified by the MIME Media type "text/html"
     @Produces("text/html")
     @Path("html/{username}")
-    public String getReturnJSON(@PathParam("username") String userName) {
+    public String getReturnHTML(@PathParam("username") String userName) {
         // Return some passed textual content
         return "<html><body><h1>Hello " + userName + "</h1></body></html>";
+    }
+
+    // The Java method will process JSON GET requests, like: http://localhost:9998/helloworld/json/Dave
+    @GET
+    // The Java method will produce content identified by the MIME Media type "application/json"
+    @Produces("application/json")
+    @Path("json/{username}")
+    public String getReturnJSON(@PathParam("username") String userName) {
+        // Return some passed textual content
+        return " Message : Hello " + userName;
     }
 
     public static void main(String[] args) throws IOException {
